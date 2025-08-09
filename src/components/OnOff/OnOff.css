@@ -1,0 +1,15 @@
+.On{
+    background-color: green;
+
+}
+
+.Off{
+    background-color: red;
+}
+
+.Circle{
+width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+}
