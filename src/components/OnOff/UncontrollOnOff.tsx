@@ -1,19 +1,20 @@
 import React, {useState} from "react";
 
 type OnOffPropsType = {
-    onClick:(value:boolean)=>void,
-    value:boolean,
+    // ok: boolean
 }
 
 
-export default function OnOff(props: OnOffPropsType) {
+export default function UncontrollOnOff(props: OnOffPropsType) {
+
+    let [on, setOn] = useState(false)
 
     const circleStyle = {
         width: '20px',
         height: '20px',
         borderRadius: '50%',
         display: 'inline-block',
-        backgroundColor: props.value?'green':'red',
+        backgroundColor: on?'green':'red',
         marginLeft:'2px',
     }
 
@@ -22,7 +23,7 @@ export default function OnOff(props: OnOffPropsType) {
         height: '20px',
         border: '1px solid black',
         padding: '2px',
-        backgroundColor: props.value ? 'green' : 'white',
+        backgroundColor: on ? 'green' : 'white',
         display:'inline-block'
     }
     const ofStyle = {
@@ -30,14 +31,14 @@ export default function OnOff(props: OnOffPropsType) {
         height: '20px',
         border: '1px solid black',
         padding: '2px',
-        backgroundColor: props.value ? 'white' : 'red',
+        backgroundColor: on ? 'white' : 'red',
         display:'inline-block'
     }
 
     return (
         <div>
-            <div style={onStyle} onClick={()=>{props.onClick(true)}}>On</div>
-            <div style={ofStyle} onClick={()=>{props.onClick(false)}}>Off</div>
+            <div style={onStyle} onClick={()=>{setOn(true)}}>On</div>
+            <div style={ofStyle} onClick={()=>{setOn(false)}}>Off</div>
             <div style={circleStyle}></div>
         </div>
 
