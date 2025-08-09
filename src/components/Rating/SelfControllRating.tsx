@@ -1,54 +1,37 @@
 import React, {useState} from "react";
 
 type RatingPropsType = {
-    // value: 1 | 2 | 3 | 4 | 5 | 0,
+
 }
 
-type StarPropsType = {
-    selected: boolean,
-}
+
 
 export default function SelfControlRating(props: RatingPropsType) {
 
-    const [value, setStar] = useState(0)
+    const [value, setValue] = useState(2)
 
     return (
         <div>
-            <Star selected={value > 0}/>
-            <button onClick={() => {
-                setStar(1)
-            }}>1
-            </button>
-            <Star selected={value > 1}/>
-            <button onClick={() => {
-                setStar(2)
-            }}>2
-            </button>
-            <Star selected={value > 2}/>
-            <button onClick={() => {
-                setStar(3)
-            }}>3
-            </button>
-            <Star selected={value > 3}/>
-            <button onClick={() => {
-                setStar(4)
-            }}>4
-            </button>
-            <Star selected={value > 4}/>
-            <button onClick={() => {
-                setStar(5)
-            }}>5
-            </button>
+            <Star selected={value > 0} setValue={()=>{setValue(1)}} />
+            <Star selected={value > 1} setValue={()=>{setValue(2)}} />
+            <Star selected={value > 2} setValue={()=>{setValue(3)}} />
+            <Star selected={value > 3} setValue={()=>{setValue(4)}} />
+            <Star selected={value > 4} setValue={()=>{setValue(5)}}/>
         </div>)
 
 
 }
 
 
+type StarPropsType = {
+    selected: boolean,
+    setValue:()=>void,
+}
+
 function Star(props: StarPropsType) {
     return (
-        <span>
-            {props.selected? <b>star</b>: 'star'}
+        <span onClick={()=>{props.setValue()}}>
+            {props.selected? <b> star </b>: ' star '}
         </span>
     )
 
